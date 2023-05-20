@@ -45,9 +45,9 @@ public class SimpleJDKDynamicProxyDemoV2 {
          */
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            System.out.println("entering sayHello");
+            System.out.println("entering " + method.getName());
             Object ret = method.invoke(realObject, args);
-            System.out.println("leaving sayHello");
+            System.out.println("leaving " + method.getName());
             return ret;
         }
     }

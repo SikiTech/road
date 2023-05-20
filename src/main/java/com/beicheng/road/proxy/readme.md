@@ -8,8 +8,41 @@
 ### jkd
 - 必须实现相同的接口
 - InvocationHandler、Proxy
+- 所有代理类的父类都是Proxy
+```java
+    /**
+     * 获取代理的实例
+     * @param clz 由于泛型在运行期间会作擦除，这里额外传如类型信息
+     * @param realObject 目标类型
+     * @param <T> 这里用泛型T来指代目标类型提升通用性
+     * @return
+     */
+    public static <T> T getProxyInstance(Class<T> clz, T realObject) {
+        InvocationHandler handler = new SimpleInvocationHandler(realObject);
+        return (T) Proxy.newProxyInstance(clz.getClassLoader(), new Class[]{clz}, handler);
+    }
+```
 
 ### cglib
+- 生成的代理类的父类都是被代理类
+- 直接生成代理类
+```java
+    /**
+     * 直接生成代理类
+     * @param clz
+     * @return
+     */
+    public static <T> T getProxyInstance(Class<T> clz) {
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(clz);
+        enhancer.setCallback(new SimpleInterceptor());
+        return (T) enhancer.create();
+    }
+```
+
+
+### ByteBuddy
+
 
 
 ## 手写AOP框架
