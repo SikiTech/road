@@ -1,6 +1,5 @@
 package com.beicheng.road.proxy;
 
-import javax.sound.midi.Soundbank;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -29,6 +28,10 @@ public class SimpleJDKDynamicProxyDemo {
             this.realObject = realObject;
         }
 
+        /**
+         * 调用处理器件
+         * @param proxy 当前代理对象
+         */
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             System.out.println("entering sayHello");
