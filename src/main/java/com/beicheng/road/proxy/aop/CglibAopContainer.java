@@ -2,7 +2,6 @@ package com.beicheng.road.proxy.aop;
 
 import org.springframework.cglib.proxy.Enhancer;
 
-import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
