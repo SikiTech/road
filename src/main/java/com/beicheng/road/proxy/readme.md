@@ -10,7 +10,12 @@
 - 必须实现相同的接口
 - InvocationHandler、Proxy
 - 所有代理类的父类都是Proxy
-- 
+- 步骤：
+    1. 初始化目标对象
+    2. 编写调用处理器，并实现InvocationHandler接口
+    3. 用构造注入目标对象，代理增强都在拦截器中处理
+    4. 使用Proxy创建代理类，并转化为目标接口的引用
+    5. 调用目标接口引用的方法实现代理
 ```java
     /**
      * 获取代理的实例
@@ -29,6 +34,11 @@
 - 机制：代理类继承被代理类，重写并做字节码增强
 - 生成的代理类的父类都是被代理类
 - 直接生成代理类
+- 步骤：
+    1. 编写方法拦截器，并实现MethodInterceptor接口
+    2. 代理增强都在拦截器中处理
+    3. 使用enhancer创建代理类
+    4. 直接代理类的方法
 ```java
     /**
      * 直接生成代理类
@@ -50,10 +60,11 @@
 
 ## 手写AOP框架
 设计目标：
-2、实现日志切面before、after和异常切面exception
 1、实现通过@SimpleInject注入属性
+2、实现日志切面before、after和异常切面exception方法
+3、实现MethodInterceptor接口，作具体的拦截任务
+4、获取@Aspect代理类，并通过Enhance创建动态代理对象，调用
 @ServiceLogAspect 切面，做类似MethodInterceptor的增强
-
 AOP容器，使用被@Aspect 标识被代理类，通过动态代理
 
 ## 总结
