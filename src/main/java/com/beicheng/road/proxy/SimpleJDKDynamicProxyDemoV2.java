@@ -54,7 +54,7 @@ public class SimpleJDKDynamicProxyDemoV2 {
 
     /**
      * 获取代理的实例
-     * @param clz 由于泛型在运行期间会作擦除，这里额外传如类型信息
+     * @param clz 必须是接口
      * @param realObject 目标类型
      * @param <T> 这里用泛型T来指代目标类型提升通用性
      * @return
